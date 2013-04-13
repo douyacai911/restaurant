@@ -1,0 +1,9 @@
+<resources>
+<string-array name="category">
+<item>炒菜</item>
+<item>凉菜</item>
+<item>主食</item>
+<item>酒水</item>
+<item>其他</item>
+</string-array>
+</resources>

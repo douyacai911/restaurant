@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.restaurant.activity"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <permission
+        android:name="com.restaurant.activity.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.restaurant.activity.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!-- My Location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Maps API needs OpenGL ES2.0. -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.restaurant.activity.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.restaurant.activity.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:parentActivityName="com.restaurant.activity.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.restaurant.activity.LoginActivity" />
+        </activity>
+        <activity
+            android:name="com.restaurant.activity.BeginActivity"
+            android:label="@string/title_activity_begin" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="appkey" />
+
+        <activity
+            android:name="com.restaurant.activity.MyMenuActivity"
+            android:label="@string/title_activity_my_menu" >
+        </activity>
+        <activity
+            android:name="com.restaurant.activity.AddDishActivity"
+            android:label="@string/title_activity_add_dish"
+            android:parentActivityName="com.restaurant.activity.MyMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.restaurant.activity.MyMenuActivity" />
+        </activity>
+    </application>
+
+</manifest>

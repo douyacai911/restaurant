@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".LoginActivity" >
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="43dp"
+        android:text="用户名" />
+
+    <TextView
+        android:id="@+id/liangcai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/test"
+        android:layout_below="@+id/test"
+        android:layout_marginTop="34dp"
+        android:text="密码" />
+
+    <EditText
+        android:id="@+id/userText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/test"
+        android:layout_alignBottom="@+id/test"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/test"
+        android:ems="10"
+        android:inputType="text" >
+
+        <requestFocus />
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/pwdText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/liangcai"
+        android:layout_alignBottom="@+id/liangcai"
+        android:layout_alignLeft="@+id/userText"
+        android:ems="10"
+        android:inputType="textPassword" >
+    </EditText>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LoginBtn"
+        android:layout_alignBottom="@+id/LoginBtn"
+        android:layout_alignRight="@+id/pwdText"
+        android:layout_marginRight="26dp"
+        android:text=" 注册 " />
+
+    <Button
+        android:id="@+id/LoginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pwdText"
+        android:layout_marginTop="115dp"
+        android:layout_toRightOf="@+id/liangcai"
+        android:text=" 登陆 " />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LoginBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp"
+        android:visibility="gone" />
+
+</RelativeLayout>
