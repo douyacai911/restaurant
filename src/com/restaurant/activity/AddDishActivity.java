@@ -54,17 +54,17 @@ public class AddDishActivity extends Activity {
 						String Description = description.getText().toString();
 						boolean cancel = false;
 						View focusView = null;
-						if (TextUtils.isEmpty(Dishname)) {// 用户名为空
+						if (TextUtils.isEmpty(Dishname)) {
 							dishname.setError("菜品名不能为空");
 							focusView = dishname;
 							cancel = true;
-						}else if (TextUtils.isEmpty(Price)) { //密码为空
-							price.setError(getString(R.string.error_field_required));
+						}else if (TextUtils.isEmpty(Price)) {
+							price.setError("定价不能为空");
 							focusView  = price;
 							cancel = true;
 						
-						} else if (TextUtils.isEmpty(Description)) { //email为空
-							description.setError(getString(R.string.error_email_required));
+						} else if (TextUtils.isEmpty(Description)) { 
+							description.setError("请写一些介绍");
 							focusView = description;
 							cancel = true;
 						} 

@@ -148,23 +148,22 @@ containing a value of this type.
         public static final int AddDish=0x7f040005;
         public static final int Button1=0x7f040014;
         public static final int CategorySelect=0x7f040009;
+        public static final int DishName=0x7f040020;
+        public static final int DishPrice=0x7f040021;
         public static final int EditText1=0x7f040007;
         public static final int EditText2=0x7f04000e;
-        public static final int EditText3=0x7f040022;
+        public static final int EditText3=0x7f04001e;
         public static final int EditText4=0x7f04000b;
         public static final int LinearLayout1=0x7f04001b;
+        public static final int ListView01=0x7f04001d;
         public static final int LoginBtn=0x7f04001a;
-        public static final int action_settings=0x7f040023;
+        public static final int RelativeLayout01=0x7f04001f;
+        public static final int action_settings=0x7f040022;
         public static final int button1=0x7f04000f;
         public static final int button2=0x7f040010;
-        public static final int chaocai=0x7f04001d;
-        public static final int chaocaiListView=0x7f04001e;
         public static final int dishTextView=0x7f040006;
         public static final int hybrid=0x7f040004;
         public static final int liangcai=0x7f040012;
-        public static final int liangcaiListView=0x7f04001f;
-        public static final int listView3=0x7f040020;
-        public static final int listView4=0x7f040021;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040001;
         public static final int price=0x7f04000a;
@@ -188,6 +187,7 @@ containing a value of this type.
         public static final int activity_login=0x7f030002;
         public static final int activity_my_menu=0x7f030003;
         public static final int activity_register=0x7f030004;
+        public static final int menu_list_layout=0x7f030005;
     }
     public static final class menu {
         public static final int add_dish=0x7f090000;
