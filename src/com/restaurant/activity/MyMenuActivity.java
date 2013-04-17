@@ -38,7 +38,7 @@ public class MyMenuActivity extends Activity {
 		Bundle bundle = intent.getExtras();
 		restid = bundle.getInt("restid");
 		list = (ListView) findViewById(R.id.ListView01);
-
+		setTitle("我的菜单");
 		new Thread(progressThread).start();
 
 		// 添加点击
@@ -142,6 +142,7 @@ public class MyMenuActivity extends Activity {
 				map.put("dishname", dishname);
 				map.put("price", price);
 				map.put("categoryid", categoryid);
+				map.put("index", i);
 				listItem.add(map);
 			}
 			return listItem;
