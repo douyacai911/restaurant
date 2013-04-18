@@ -67,6 +67,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.restaurant.activity.MyMenuActivity" />
         </activity>
+        <activity
+            android:name="com.restaurant.activity.EditDishActivity"
+            android:label="@string/title_activity_edit_dish"
+            android:parentActivityName="com.restaurant.activity.MyMenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.restaurant.activity.MyMenuActivity" />
+        </activity>
     </application>
 
 </manifest>

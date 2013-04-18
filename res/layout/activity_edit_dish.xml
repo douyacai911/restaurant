@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="31dp"
         android:layout_marginTop="27dp"
-        android:text="添加菜品"
+        android:text="编辑菜品"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -113,7 +113,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="68dp"
         android:layout_toRightOf="@+id/price"
-        android:text="添加" />
+        android:text="修改" />
 
     <Button
         android:id="@+id/button2"

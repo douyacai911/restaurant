@@ -198,9 +198,9 @@ public class BeginActivity extends Activity {
 			try {
 				List<Address> addresses = geocoder.getFromLocationName(add, 1);
 				if (addresses != null && addresses.size() != 0) {
-					result = Double.toString(addresses.get(0).getLatitude())
+					result = Double.toString(addresses.get(0).getLongitude())
 							+ ","
-							+ Double.toString(addresses.get(0).getLongitude());
+							+ Double.toString(addresses.get(0).getLatitude());
 				} else {
 					result = "-1";
 				}

@@ -47,7 +47,14 @@ public class MyMenuActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				setTitle("点击第" + arg2 + "个项目");
+				
+				HashMap<String, Object> thisfood = (HashMap<String, Object>) arg0.getItemAtPosition(arg2);
+				int thisfoodid = (Integer) thisfood.get("foodid");
+				Intent intent = new Intent().setClass(MyMenuActivity.this, EditDishActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putInt("foodid", restid);
+				intent.putExtras(bundle);
+				startActivity(intent);
 			}
 		});
 
@@ -96,10 +103,6 @@ public class MyMenuActivity extends Activity {
 		public void run() {
 			Message msg = new Message();
 			new Thread();
-//			String result = goRegister(restid);
-//			if(result.equals("-1")){
-//				msg.what=-123;
-//			}
 			Object flag = jsonToMenu(restid);
 			if(flag==null){
 				msg.what = -123;
@@ -136,9 +139,11 @@ public class MyMenuActivity extends Activity {
 				// map.put("ItemText", "Finished in 1 Min 54 Secs, 70 Moves! ");
 				// listItem.add(map);
 				JSONObject dish = (JSONObject) jsonArray.get(i);
+				int foodid = dish.getInt("foodid");
 				String dishname = dish.getString("dishname");
 				double price = dish.getDouble("price");
 				int categoryid = dish.getInt("categoryid");
+				map.put("foodid", foodid);
 				map.put("dishname", dishname);
 				map.put("price", price);
 				map.put("categoryid", categoryid);
