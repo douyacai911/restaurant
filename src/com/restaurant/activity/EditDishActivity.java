@@ -1,19 +1,41 @@
 package com.restaurant.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
 public class EditDishActivity extends Activity {
-
+	private int foodid = 0;
+	private EditText dishname,price,description;
+	private int categoryid;
+	private Handler mainHandler;
+	private static final String[] m={"炒菜","凉菜","主食","酒水","其他"};  
+    private Spinner spinner;  
+    private ArrayAdapter<String> adapter;  
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_dish);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		Intent intent = this.getIntent();
+		Bundle bundle = intent.getExtras();
+		foodid = bundle.getInt("foodid");
+		
+		dishname = (EditText)findViewById(R.id.EditText1);
+		price = (EditText)findViewById(R.id.EditText4);
+		description = (EditText)findViewById(R.id.EditText2);
+		
 	}
 
 	/**

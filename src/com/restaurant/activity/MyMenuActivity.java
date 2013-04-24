@@ -52,7 +52,7 @@ public class MyMenuActivity extends Activity {
 				int thisfoodid = (Integer) thisfood.get("foodid");
 				Intent intent = new Intent().setClass(MyMenuActivity.this, EditDishActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putInt("foodid", restid);
+				bundle.putInt("foodid", thisfoodid);
 				intent.putExtras(bundle);
 				startActivity(intent);
 			}
