@@ -15,5 +15,6 @@
     <string name="title_activity_my_menu">MyMenuActivity</string>
     <string name="title_activity_add_dish">AddDishActivity</string>
     <string name="title_activity_edit_dish">编辑菜品</string>
+    <string name="title_activity_order_list">OrderListActivity</string>
 
 </resources>

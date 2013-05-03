@@ -26,13 +26,16 @@ public class LoginActivity extends Activity {
 	public static LoginActivity instance = null;
 	private EditText userText,pwdText;
 	private Handler mainHandler;
+
+	private TheApplication app;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		app = (TheApplication) getApplication(); 
 		userText = (EditText)findViewById(R.id.userText);
 		pwdText = (EditText)findViewById(R.id.pwdText);
-		
+		app = (TheApplication) getApplication(); 
 		instance = this; //指定关闭用
 		 
 		
@@ -93,9 +96,10 @@ public class LoginActivity extends Activity {
 				default:
 					Toast.makeText(LoginActivity.this, "登陆成功",Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent().setClass(LoginActivity.this, MyMenuActivity.class);
-					Bundle bundle = new Bundle();
-					bundle.putInt("restid", msg.what);
-					intent.putExtras(bundle);
+					app.setRestid(msg.what);
+//					Bundle bundle = new Bundle();
+//					bundle.putInt("restid", msg.what);
+//					intent.putExtras(bundle);
 	    			startActivity(intent);
 	    			finish();
 					break;

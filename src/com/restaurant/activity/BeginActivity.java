@@ -37,14 +37,16 @@ public class BeginActivity extends Activity {
     private RadioButton radio1,radio2;  
     private int delivery = 0;
     private int restid = 0;
+    private TheApplication app;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_begin);
-		Intent intent = this.getIntent();
-		Bundle bundle = intent.getExtras();
-		restid = bundle.getInt("restid");
-		
+		app = (TheApplication) getApplication(); 
+//		Intent intent = this.getIntent();
+//		Bundle bundle = intent.getExtras();
+//		restid = bundle.getInt("restid");
+		restid = app.getRestid();
 		restname = (EditText) findViewById(R.id.EditText1);
 		tel = (EditText) findViewById(R.id.EditText4);
 		address = (EditText) findViewById(R.id.EditText2);
@@ -115,9 +117,10 @@ public class BeginActivity extends Activity {
 					Toast.makeText(BeginActivity.this, "×¢²á³É¹¦",Toast.LENGTH_SHORT).show();
 //					LoginActivity.instance.finish();	//¹Ø±ÕLoginActivity
 					Intent intent = new Intent().setClass(BeginActivity.this, MyMenuActivity.class);
-					Bundle bundle = new Bundle();
-					bundle.putInt("restid", msg.what);
-					intent.putExtras(bundle);
+//					Bundle bundle = new Bundle();
+//					bundle.putInt("restid", msg.what);
+//					intent.putExtras(bundle);
+					app.setRestid(msg.what);
 	    			startActivity(intent);
 	    			finish();
 	    			

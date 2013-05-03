@@ -147,20 +147,21 @@ containing a value of this type.
     public static final class id {
         public static final int Button1=0x7f040014;
         public static final int CategorySelect=0x7f040009;
-        public static final int DishName=0x7f040020;
-        public static final int DishPrice=0x7f040021;
+        public static final int DishName=0x7f040021;
+        public static final int DishPrice=0x7f040022;
         public static final int EditDish=0x7f040005;
         public static final int EditText1=0x7f040007;
         public static final int EditText2=0x7f04000e;
-        public static final int EditText3=0x7f04001e;
+        public static final int EditText3=0x7f04001f;
         public static final int EditText4=0x7f04000b;
-        public static final int LinearLayout1=0x7f04001b;
-        public static final int ListView01=0x7f04001d;
-        public static final int LoginBtn=0x7f04001a;
-        public static final int RelativeLayout01=0x7f04001f;
-        public static final int action_settings=0x7f040022;
+        public static final int ListView01=0x7f04001e;
+        public static final int LoginBtn=0x7f04001b;
+        public static final int RelativeLayout01=0x7f040020;
+        public static final int RelativeLayout1=0x7f04001c;
+        public static final int action_settings=0x7f040023;
         public static final int button1=0x7f04000f;
         public static final int button2=0x7f040010;
+        public static final int button3=0x7f040018;
         public static final int dishTextView=0x7f040006;
         public static final int hybrid=0x7f040004;
         public static final int liangcai=0x7f040012;
@@ -168,18 +169,18 @@ containing a value of this type.
         public static final int normal=0x7f040001;
         public static final int price=0x7f04000a;
         public static final int progressBar1=0x7f040011;
-        public static final int pwdText=0x7f040019;
+        public static final int pwdText=0x7f04001a;
         public static final int radioButton1=0x7f040016;
         public static final int radioButton2=0x7f040017;
         public static final int radiogroup1=0x7f040015;
         public static final int satellite=0x7f040002;
         public static final int terrain=0x7f040003;
         public static final int test=0x7f040013;
-        public static final int test1=0x7f04001c;
+        public static final int test1=0x7f04001d;
         public static final int textView3=0x7f040008;
         public static final int textView5=0x7f04000c;
         public static final int textView6=0x7f04000d;
-        public static final int userText=0x7f040018;
+        public static final int userText=0x7f040019;
     }
     public static final class layout {
         public static final int activity_add_dish=0x7f030000;
@@ -187,8 +188,9 @@ containing a value of this type.
         public static final int activity_edit_dish=0x7f030002;
         public static final int activity_login=0x7f030003;
         public static final int activity_my_menu=0x7f030004;
-        public static final int activity_register=0x7f030005;
-        public static final int menu_list_layout=0x7f030006;
+        public static final int activity_order_list=0x7f030005;
+        public static final int activity_register=0x7f030006;
+        public static final int menu_list_layout=0x7f030007;
     }
     public static final class menu {
         public static final int add_dish=0x7f090000;
@@ -196,7 +198,8 @@ containing a value of this type.
         public static final int edit_dish=0x7f090002;
         public static final int login=0x7f090003;
         public static final int my_menu=0x7f090004;
-        public static final int register=0x7f090005;
+        public static final int order_list=0x7f090005;
+        public static final int register=0x7f090006;
     }
     public static final class string {
         public static final int action_settings=0x7f050012;
@@ -274,6 +277,7 @@ containing a value of this type.
         public static final int title_activity_begin=0x7f05001b;
         public static final int title_activity_edit_dish=0x7f05001e;
         public static final int title_activity_my_menu=0x7f05001c;
+        public static final int title_activity_order_list=0x7f05001f;
         public static final int title_activity_register=0x7f050014;
     }
     public static final class style {

@@ -30,13 +30,14 @@ import android.os.Build;
 public class RegisterActivity extends Activity {
 	private EditText userText,pwdText,pwdText2,emailText;
 	private Handler mainHandler;
+	private TheApplication app;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		
+		app = (TheApplication) getApplication(); 
 		userText = (EditText)findViewById(R.id.EditText1);
 		pwdText = (EditText)findViewById(R.id.EditText4);
 		pwdText2 = (EditText)findViewById(R.id.EditText2);
@@ -99,9 +100,10 @@ public class RegisterActivity extends Activity {
 					Toast.makeText(RegisterActivity.this, "×¢²á³É¹¦",Toast.LENGTH_SHORT).show();
 					LoginActivity.instance.finish();	//¹Ø±ÕLoginActivity
 					Intent intent = new Intent().setClass(RegisterActivity.this, BeginActivity.class);
-					Bundle bundle = new Bundle();
-					bundle.putInt("restid", msg.what);
-					intent.putExtras(bundle);
+//					Bundle bundle = new Bundle();
+//					bundle.putInt("restid", msg.what);
+//					intent.putExtras(bundle);
+					app.setRestid(msg.what);
 	    			startActivity(intent);
 	    			finish();
 	    			

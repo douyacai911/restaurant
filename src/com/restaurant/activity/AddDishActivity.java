@@ -30,14 +30,17 @@ public class AddDishActivity extends Activity {
 	private EditText dishname,price,description;
 	private int categoryid;
 	private Handler mainHandler;
-	private static final String[] m={"炒菜","凉菜","主食","酒水","其他"};  
+	private static final String[] m={"炒菜","凉菜","主食","酒水","其他"};
     private Spinner spinner;  
     private ArrayAdapter<String> adapter;  
+
+	private TheApplication app;
     @Override  
     protected void onCreate(Bundle savedInstanceState) {  
         // TODO Auto-generated method stub  
         super.onCreate(savedInstanceState);  
         setContentView(R.layout.activity_add_dish);  
+        app = (TheApplication) getApplication(); 
         Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
 		restid = bundle.getInt("restid");
@@ -90,9 +93,9 @@ public class AddDishActivity extends Activity {
 					Toast.makeText(AddDishActivity.this, "添加成功",Toast.LENGTH_SHORT).show();
 					LoginActivity.instance.finish();	//关闭LoginActivity
 					Intent intent = new Intent().setClass(AddDishActivity.this, MyMenuActivity.class);
-					Bundle bundle = new Bundle();
-					bundle.putInt("restid", restid);
-					intent.putExtras(bundle);
+//					Bundle bundle = new Bundle();
+//					bundle.putInt("restid", restid);
+//					intent.putExtras(bundle);
 	    			startActivity(intent);
 	    			finish();
 	    			

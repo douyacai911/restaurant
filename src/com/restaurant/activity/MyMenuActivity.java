@@ -29,14 +29,17 @@ public class MyMenuActivity extends Activity {
 	private Handler mainHandler;
 	private SimpleAdapter listItemAdapter;
 	private ListView list;
+	private TheApplication app;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_menu);
-		Intent intent = this.getIntent();
-		Bundle bundle = intent.getExtras();
-		restid = bundle.getInt("restid");
+		app = (TheApplication) getApplication(); 
+//		Intent intent = this.getIntent();
+//		Bundle bundle = intent.getExtras();
+//		restid = bundle.getInt("restid");
+		restid = app.getRestid();
 		list = (ListView) findViewById(R.id.ListView01);
 		setTitle("ÎÒµÄ²Ëµ¥");
 		new Thread(progressThread).start();
@@ -53,12 +56,29 @@ public class MyMenuActivity extends Activity {
 				Intent intent = new Intent().setClass(MyMenuActivity.this, EditDishActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("foodid", thisfoodid);
+				bundle.putString("dishname", (String)thisfood.get("dishname"));
+				bundle.putDouble("price", (Double)thisfood.get("price"));
+				bundle.putInt("categoryid", (Integer)thisfood.get("categoryid"));
+				bundle.putString("description", (String)thisfood.get("description"));
 				intent.putExtras(bundle);
 				startActivity(intent);
 			}
 		});
 
 		findViewById(R.id.Button1).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent().setClass(
+								MyMenuActivity.this, AddDishActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putInt("restid", restid);
+						intent.putExtras(bundle);
+						startActivity(intent);
+
+					}
+				});
+		findViewById(R.id.button2).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
@@ -143,10 +163,12 @@ public class MyMenuActivity extends Activity {
 				String dishname = dish.getString("dishname");
 				double price = dish.getDouble("price");
 				int categoryid = dish.getInt("categoryid");
+				String description = dish.getString("description");
 				map.put("foodid", foodid);
 				map.put("dishname", dishname);
 				map.put("price", price);
 				map.put("categoryid", categoryid);
+				map.put("description", description);
 				map.put("index", i);
 				listItem.add(map);
 			}
