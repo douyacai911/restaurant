@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -83,10 +84,10 @@ public class MyMenuActivity extends Activity {
 					@Override
 					public void onClick(View view) {
 						Intent intent = new Intent().setClass(
-								MyMenuActivity.this, AddDishActivity.class);
-						Bundle bundle = new Bundle();
-						bundle.putInt("restid", restid);
-						intent.putExtras(bundle);
+								MyMenuActivity.this, OrderListActivity.class);
+//						Bundle bundle = new Bundle();
+//						bundle.putInt("restid", restid);
+//						intent.putExtras(bundle);
 						startActivity(intent);
 
 					}

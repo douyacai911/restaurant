@@ -80,6 +80,10 @@
             android:name="com.restaurant.activity.OrderListActivity"
             android:label="@string/title_activity_order_list" >
         </activity>
+        <activity
+            android:name="com.restaurant.activity.OrderDetailActivity"
+            android:label="@string/title_activity_order_detail" >
+        </activity>
     </application>
 
 </manifest>

@@ -42,6 +42,7 @@ public class EditDishActivity extends Activity {
     private ArrayAdapter<String> adapter;  
     private String dishname,description;
 
+	private ProgressBar progressbar;
 	private TheApplication app;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,9 @@ public class EditDishActivity extends Activity {
 		edishname.setText(dishname);
 		eprice.setText(String.valueOf(price));
 		edescription.setText(description);
+		
+
+		progressbar = (ProgressBar) findViewById(R.id.progressBar1);
 		
 		spinner = (Spinner) findViewById(R.id.CategorySelect);  
         //将可选内容与ArrayAdapter连接起来  
@@ -115,7 +119,7 @@ public class EditDishActivity extends Activity {
 						if (cancel) {
 							focusView.requestFocus();
 						} else {
-							findViewById(R.id.progressBar1).setVisibility(0);
+							progressbar.setVisibility(0);
 
 							new Thread(progressThread).start();
 						}
@@ -145,7 +149,7 @@ public class EditDishActivity extends Activity {
 															.show();
 													
 													try {
-														
+														progressbar.setVisibility(0);
 														new Thread(
 																progressThread2)
 																.start();
@@ -177,6 +181,7 @@ public class EditDishActivity extends Activity {
         this.mainHandler = new Handler(){
 			@Override
 			public void handleMessage(Message msg) {
+				progressbar.setVisibility(View.GONE);
 				switch(msg.what){
 				case -1:
 					Toast.makeText(EditDishActivity.this, "对不起，您的菜单中已有使用此菜名的菜品",Toast.LENGTH_SHORT).show();
@@ -199,6 +204,7 @@ public class EditDishActivity extends Activity {
 		 this.mainHandler2 = new Handler(){
 				@Override
 				public void handleMessage(Message msg) {
+					progressbar.setVisibility(View.GONE);
 					switch(msg.what){
 					case 0:
 						Toast.makeText(EditDishActivity.this, "对不起，请稍后再试",Toast.LENGTH_SHORT).show();
