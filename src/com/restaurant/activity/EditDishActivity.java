@@ -177,7 +177,19 @@ public class EditDishActivity extends Activity {
 						}
 					}
 				);
-        
+        findViewById(R.id.button3).setOnClickListener(
+				new View.OnClickListener() {		//点击查看评论按钮
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent().setClass(EditDishActivity.this, ReviewActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putInt("foodid", foodid);
+						bundle.putString("dishname", dishname);
+						intent.putExtras(bundle);
+		    			startActivity(intent);
+						}
+					}
+				);
         this.mainHandler = new Handler(){
 			@Override
 			public void handleMessage(Message msg) {
@@ -187,6 +199,7 @@ public class EditDishActivity extends Activity {
 					Toast.makeText(EditDishActivity.this, "对不起，您的菜单中已有使用此菜名的菜品",Toast.LENGTH_SHORT).show();
 					break;
 				default:
+					MyMenuActivity.instance.finish();
 					Toast.makeText(EditDishActivity.this, "修改成功",Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent().setClass(EditDishActivity.this, MyMenuActivity.class);
 //					Bundle bundle = new Bundle();
@@ -211,6 +224,7 @@ public class EditDishActivity extends Activity {
 						break;
 					case 1:
 						Toast.makeText(EditDishActivity.this, "删除成功",Toast.LENGTH_SHORT).show();
+						MyMenuActivity.instance.finish();
 						Intent intent = new Intent().setClass(EditDishActivity.this, MyMenuActivity.class);
 //						Bundle bundle = new Bundle();
 //						bundle.putInt("restid", restid);

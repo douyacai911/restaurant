@@ -84,6 +84,10 @@
             android:name="com.restaurant.activity.OrderDetailActivity"
             android:label="@string/title_activity_order_detail" >
         </activity>
+        <activity
+            android:name="com.restaurant.activity.ReviewActivity"
+            android:label="@string/title_activity_review" >
+        </activity>
     </application>
 
 </manifest>

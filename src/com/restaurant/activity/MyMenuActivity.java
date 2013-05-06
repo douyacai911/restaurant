@@ -7,24 +7,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.restaurant.util.HttpUtil;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.app.Activity;
-import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.restaurant.util.HttpUtil;
 
 public class MyMenuActivity extends Activity {
+	public static MyMenuActivity instance = null;
 	private int restid = 0;
 	private TextView textview;
 	private Handler mainHandler;
@@ -37,6 +37,7 @@ public class MyMenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_menu);
 		app = (TheApplication) getApplication(); 
+		instance = this; //指定关闭用
 //		Intent intent = this.getIntent();
 //		Bundle bundle = intent.getExtras();
 //		restid = bundle.getInt("restid");

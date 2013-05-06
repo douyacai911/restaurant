@@ -17,5 +17,6 @@
     <string name="title_activity_edit_dish">编辑菜品</string>
     <string name="title_activity_order_list">OrderListActivity</string>
     <string name="title_activity_order_detail">OrderDetailActivity</string>
+    <string name="title_activity_review">ReviewActivity</string>
 
 </resources>

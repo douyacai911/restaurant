@@ -147,8 +147,8 @@ containing a value of this type.
     public static final class id {
         public static final int Button1=0x7f040014;
         public static final int CategorySelect=0x7f040009;
-        public static final int DishName=0x7f04002c;
-        public static final int DishPrice=0x7f04002d;
+        public static final int DishName=0x7f04002e;
+        public static final int DishPrice=0x7f04002f;
         public static final int EditDish=0x7f040005;
         public static final int EditText1=0x7f040007;
         public static final int EditText2=0x7f04000e;
@@ -156,9 +156,9 @@ containing a value of this type.
         public static final int EditText4=0x7f04000b;
         public static final int ListView01=0x7f04001e;
         public static final int LoginBtn=0x7f04001b;
-        public static final int RelativeLayout01=0x7f04002b;
+        public static final int RelativeLayout01=0x7f04002d;
         public static final int RelativeLayout1=0x7f04001c;
-        public static final int action_settings=0x7f04002e;
+        public static final int action_settings=0x7f040030;
         public static final int button1=0x7f04000f;
         public static final int button2=0x7f040010;
         public static final int button3=0x7f040018;
@@ -174,6 +174,7 @@ containing a value of this type.
         public static final int radioButton1=0x7f040016;
         public static final int radioButton2=0x7f040017;
         public static final int radiogroup1=0x7f040015;
+        public static final int rating=0x7f04002c;
         public static final int satellite=0x7f040002;
         public static final int terrain=0x7f040003;
         public static final int test=0x7f040013;
@@ -191,6 +192,7 @@ containing a value of this type.
         public static final int textView7=0x7f040022;
         public static final int textView8=0x7f040023;
         public static final int textView9=0x7f040024;
+        public static final int time=0x7f04002b;
         public static final int userText=0x7f040019;
     }
     public static final class layout {
@@ -202,9 +204,11 @@ containing a value of this type.
         public static final int activity_order_detail=0x7f030005;
         public static final int activity_order_list=0x7f030006;
         public static final int activity_register=0x7f030007;
-        public static final int menu_list_layout=0x7f030008;
-        public static final int order_list_layout=0x7f030009;
-        public static final int orderdetail_list_layout=0x7f03000a;
+        public static final int activity_review=0x7f030008;
+        public static final int comment_list_layout=0x7f030009;
+        public static final int menu_list_layout=0x7f03000a;
+        public static final int order_list_layout=0x7f03000b;
+        public static final int orderdetail_list_layout=0x7f03000c;
     }
     public static final class menu {
         public static final int add_dish=0x7f090000;
@@ -215,6 +219,7 @@ containing a value of this type.
         public static final int order_detail=0x7f090005;
         public static final int order_list=0x7f090006;
         public static final int register=0x7f090007;
+        public static final int review=0x7f090008;
     }
     public static final class string {
         public static final int action_settings=0x7f050012;
@@ -295,6 +300,7 @@ containing a value of this type.
         public static final int title_activity_order_detail=0x7f050020;
         public static final int title_activity_order_list=0x7f05001f;
         public static final int title_activity_register=0x7f050014;
+        public static final int title_activity_review=0x7f050021;
     }
     public static final class style {
         /** 
