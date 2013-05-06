@@ -25,6 +25,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class OrderListActivity extends Activity {
 
+	public static OrderListActivity instance = null;
 	private int restid = 0;
 	private TextView textview;
 	private Handler mainHandler;
@@ -36,6 +37,7 @@ public class OrderListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_list);
 
+		instance = this; //指定关闭用
 		app = (TheApplication) getApplication(); 
 		restid = app.getRestid();
 		
@@ -52,9 +54,11 @@ public class OrderListActivity extends Activity {
 				
 				HashMap<String, Object> thisorder = (HashMap<String, Object>) arg0.getItemAtPosition(arg2);
 				int thisorderid = (Integer) thisorder.get("orderid");
+				boolean flag = (Boolean) thisorder.get("completeflag");
 				Intent intent = new Intent().setClass(OrderListActivity.this, OrderDetailActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("orderid", thisorderid);
+				bundle.putBoolean("completeflag", flag);
 				intent.putExtras(bundle);
 				startActivity(intent);
 			}
@@ -74,9 +78,9 @@ public class OrderListActivity extends Activity {
 						(ArrayList<HashMap<String, Object>>) msg.obj,// 数据源
 						R.layout.order_list_layout,// ListItem的XML实现
 						// 动态数组与ImageItem对应的子项
-						new String[] { "eattime", "maketime","delivery" },
+						new String[] { "eattime", "maketime","delivery","flagString" },
 						// ImageItem的XML文件里面的一个ImageView,两个TextView ID
-						new int[] { R.id.textView4, R.id.textView2, R.id.textView5}
+						new int[] { R.id.textView4, R.id.textView2, R.id.textView5,R.id.textView6}
 
 				);
 
@@ -132,24 +136,31 @@ public class OrderListActivity extends Activity {
 
 			for (int i = 0; i < jsonArray.length(); i++) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
-				// map.put("ItemTitle", "Level "+i);
-				// map.put("ItemText", "Finished in 1 Min 54 Secs, 70 Moves! ");
-				// listItem.add(map);
 				JSONObject order = (JSONObject) jsonArray.get(i);
 				int orderid = order.getInt("orderid");
 				boolean delivery = order.getBoolean("delivery");
+				boolean completeflag = order.getBoolean("completeflag");
 				String eattime = order.getString("eattime");
 				String maketime = order.getString("maketime");
 				String theDelivery = "";
+				String flagString = "";
+				
 				if(delivery){
 					theDelivery = "外送";
 				}else{
 					theDelivery = "来店";
 				}
+				if(completeflag){
+					flagString = "已完成";
+				}else{
+					flagString = " ";
+				}
 				map.put("orderid", orderid);
 				map.put("delivery", theDelivery);
 				map.put("eattime", eattime);
 				map.put("maketime", maketime);
+				map.put("completeflag", completeflag);
+				map.put("flagString", flagString);
 				map.put("index", i);
 				listItem.add(map);
 			}

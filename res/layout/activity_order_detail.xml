@@ -15,6 +15,7 @@
         android:layout_above="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
+
     </ListView>
 
     <TextView
@@ -79,37 +80,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
         android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView2"
         android:layout_marginLeft="33dp"
-        android:text="Button" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignRight="@+id/listView1"
-        android:text="元" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_marginRight="12dp"
-        android:layout_toLeftOf="@+id/textView3"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_marginBottom="150dp"
-        android:layout_marginRight="15dp"
-        android:layout_toLeftOf="@+id/textView2"
-        android:text="共" />
+        android:text="添加订单完成标记" />
 
     <TextView
         android:id="@+id/textView11"
@@ -151,14 +124,32 @@
         android:text="TextView"
         android:visibility="gone" />
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_marginRight="28dp"
-        android:text="Button" />
+        android:layout_alignRight="@+id/listView1"
+        android:layout_centerVertical="true"
+        android:text="元" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_marginRight="13dp"
+        android:layout_toLeftOf="@+id/textView3"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_marginRight="12dp"
+        android:layout_toLeftOf="@+id/textView2"
+        android:text="共" />
 
 </RelativeLayout>

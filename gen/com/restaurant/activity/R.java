@@ -178,11 +178,11 @@ containing a value of this type.
         public static final int terrain=0x7f040003;
         public static final int test=0x7f040013;
         public static final int test1=0x7f04001d;
-        public static final int textView1=0x7f040025;
-        public static final int textView10=0x7f040027;
-        public static final int textView11=0x7f040026;
-        public static final int textView12=0x7f040028;
-        public static final int textView13=0x7f040029;
+        public static final int textView1=0x7f040029;
+        public static final int textView10=0x7f040026;
+        public static final int textView11=0x7f040025;
+        public static final int textView12=0x7f040027;
+        public static final int textView13=0x7f040028;
         public static final int textView2=0x7f040021;
         public static final int textView3=0x7f040008;
         public static final int textView4=0x7f040020;

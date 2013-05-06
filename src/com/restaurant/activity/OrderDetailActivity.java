@@ -13,8 +13,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -24,10 +29,12 @@ public class OrderDetailActivity extends Activity {
 	private int restid = 0;
 	private int orderid = 0;
 	private TextView textview,lastinfo,lastinfo2,ttotal,teattime,tmaketime,tremark,tremark2,ttel;
-	private Handler mainHandler;
+	private Handler mainHandler,mainHandler2;
 	private SimpleAdapter listItemAdapter;
 	private ListView list;
 	private TheApplication app;
+	private boolean completeflag = false;
+	private Button button;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,16 +45,22 @@ public class OrderDetailActivity extends Activity {
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
 		orderid = bundle.getInt("orderid");
+		completeflag = bundle.getBoolean("completeflag");
+		button = (Button) findViewById(R.id.button1);
+		if(completeflag){
+			button.setEnabled(false);
+			button.setText("该订单已被标记为完成");
+		}
 		list = (ListView) findViewById(R.id.listView1);
 		lastinfo = (TextView) findViewById(R.id.textView6);
-		lastinfo2 = (TextView) findViewById(R.id.textView9);
+		lastinfo2 = (TextView) findViewById(R.id.textView9); //就餐人数或送餐地址
 		ttotal = (TextView) findViewById(R.id.textView2);
 		teattime = (TextView) findViewById(R.id.textView8);
 		tmaketime = (TextView) findViewById(R.id.textView7);
 		tremark = (TextView) findViewById(R.id.textView10);
 		tremark2 = (TextView) findViewById(R.id.textView11);
 		ttel = (TextView)findViewById(R.id.textView13);
-		setTitle("订单一览");
+		setTitle("订单详情");
 		new Thread(progressThread).start();
 		
 		
@@ -132,6 +145,76 @@ public class OrderDetailActivity extends Activity {
 			}
 
 			};
+			
+			button.setOnClickListener(
+					new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							
+								final AlertDialog.Builder builder = new Builder(
+										OrderDetailActivity.this);
+								builder.setTitle("添加订单完成标记")
+										.setMessage("当前订单将被标记为完成，顾客将可以对此添加评价，确认无误后请点击“确定”")
+										.setPositiveButton(
+												"确定",
+												new DialogInterface.OnClickListener() {
+													public void onClick(
+															DialogInterface dialoginterface,
+															int i) {
+														// 按钮事件
+														Toast.makeText(
+																OrderDetailActivity.this,
+																"请稍候",
+																Toast.LENGTH_SHORT)
+																.show();
+														
+														try {
+															new Thread(
+																	progressThread2)
+																	.start();
+														} catch (Exception e) {
+															Toast.makeText(
+																	OrderDetailActivity.this,
+																	"Failed to send SMS",
+																	Toast.LENGTH_LONG)
+																	.show();
+															e.printStackTrace();
+														}
+
+													}
+												})
+										.setNegativeButton(
+												"返回",
+												new DialogInterface.OnClickListener() {
+													@Override
+													public void onClick(
+															DialogInterface dialog,
+															int which) {
+														dialog.dismiss();
+													}
+												}).show();
+							}
+						}
+					);
+			this.mainHandler2 = new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					// findViewById(R.id.progressBar1).setVisibility(View.GONE);
+					if(msg.what==1){
+						OrderListActivity.instance.finish();
+						Toast.makeText(OrderDetailActivity.this,"完成标记添加成功",
+								Toast.LENGTH_LONG)
+								.show();
+						Intent intent = new Intent().setClass(OrderDetailActivity.this, OrderListActivity.class);
+						startActivity(intent);
+						finish();
+					}else{
+						Toast.makeText(OrderDetailActivity.this,"对不起，请稍后再试",
+								Toast.LENGTH_LONG)
+								.show();
+					}
+
+					}};
 	}
 
 	
@@ -147,6 +230,20 @@ public class OrderDetailActivity extends Activity {
 				msg.obj = flag;
 			}
 			mainHandler.sendMessage(msg);
+		}
+	};
+	Runnable progressThread2 = new Runnable() {
+		@Override
+		public void run() {
+			Message msg = new Message();
+			new Thread();
+			String result = setCompleteFlag(orderid);
+			if(Integer.parseInt(result)==1){
+				msg.what = 1;
+			}else{
+				msg.what = 0;;
+			}
+			mainHandler2.sendMessage(msg);
 		}
 	};
 	
@@ -174,50 +271,16 @@ public class OrderDetailActivity extends Activity {
 		}
 		
 	}
+	private String setCompleteFlag(int id) {
+		// 查询参数
+
+		String registerString = "orderid=" + id;
+		// URL
+		String url = HttpUtil.BASE_URL + "SetCompleteServlet?" + registerString;
+		// 查询返回结果
+		return HttpUtil.queryStringForPost(url);
+	}
 	
-	
-//	private ArrayList<HashMap<String, Object>> jsonToOrderList(int id) {
-//		String jsonString = goSearch(id);
-//		if(jsonString.equals("-1")){
-//			return null;
-//		}
-//		ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();
-//		try {
-//			JSONObject json = new JSONObject(jsonString);
-//			JSONArray jsonArray = json.getJSONArray("orderdetailarray");
-//
-//			for (int i = 0; i < jsonArray.length(); i++) {
-//				HashMap<String, Object> map = new HashMap<String, Object>();
-//				// map.put("ItemTitle", "Level "+i);
-//				// map.put("ItemText", "Finished in 1 Min 54 Secs, 70 Moves! ");
-//				// listItem.add(map);
-//				JSONObject order = (JSONObject) jsonArray.get(i);
-//				int orderid = order.getInt("orderid");
-//				boolean delivery = order.getBoolean("delivery");
-//				String eattime = order.getString("eattime");
-//				String maketime = order.getString("maketime");
-//				String theDelivery = "";
-//				if(delivery){
-//					theDelivery = "外送";
-//				}else{
-//					theDelivery = "来店";
-//				}
-//				map.put("orderid", orderid);
-//				map.put("delivery", theDelivery);
-//				map.put("eattime", eattime);
-//				map.put("maketime", maketime);
-//				map.put("index", i);
-//				listItem.add(map);
-//			}
-//			return listItem;
-//
-//		} catch (JSONException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			return null;
-//		}
-//
-//	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
