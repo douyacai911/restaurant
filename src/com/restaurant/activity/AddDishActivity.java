@@ -91,7 +91,7 @@ public class AddDishActivity extends Activity {
 					break;
 				default:
 					Toast.makeText(AddDishActivity.this, "添加成功",Toast.LENGTH_SHORT).show();
-					LoginActivity.instance.finish();	//关闭LoginActivity
+					MyMenuActivity.instance.finish();	
 					Intent intent = new Intent().setClass(AddDishActivity.this, MyMenuActivity.class);
 //					Bundle bundle = new Bundle();
 //					bundle.putInt("restid", restid);

@@ -18,5 +18,6 @@
     <string name="title_activity_order_list">OrderListActivity</string>
     <string name="title_activity_order_detail">OrderDetailActivity</string>
     <string name="title_activity_review">ReviewActivity</string>
+    <string name="title_activity_edit_info">EditInfoActivity</string>
 
 </resources>

@@ -12,7 +12,6 @@
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
         android:layout_marginBottom="8dp" >
@@ -26,14 +25,5 @@
         android:layout_alignLeft="@+id/listView1"
         android:layout_alignParentTop="true"
         android:text="点击订单可查看详细" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp"
-        android:text="返回" />
 
 </RelativeLayout>

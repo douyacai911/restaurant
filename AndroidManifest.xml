@@ -88,6 +88,10 @@
             android:name="com.restaurant.activity.ReviewActivity"
             android:label="@string/title_activity_review" >
         </activity>
+        <activity
+            android:name="com.restaurant.activity.EditInfoActivity"
+            android:label="@string/title_activity_edit_info" >
+        </activity>
     </application>
 
 </manifest>

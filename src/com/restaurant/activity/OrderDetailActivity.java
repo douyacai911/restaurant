@@ -241,7 +241,7 @@ public class OrderDetailActivity extends Activity {
 			if(Integer.parseInt(result)==1){
 				msg.what = 1;
 			}else{
-				msg.what = 0;;
+				msg.what = 0;
 			}
 			mainHandler2.sendMessage(msg);
 		}

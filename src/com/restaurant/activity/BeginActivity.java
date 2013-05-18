@@ -38,14 +38,13 @@ public class BeginActivity extends Activity {
     private int delivery = 0;
     private int restid = 0;
     private TheApplication app;
+    private boolean editFlag = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_begin);
 		app = (TheApplication) getApplication(); 
-//		Intent intent = this.getIntent();
-//		Bundle bundle = intent.getExtras();
-//		restid = bundle.getInt("restid");
+		
 		restid = app.getRestid();
 		restname = (EditText) findViewById(R.id.EditText1);
 		tel = (EditText) findViewById(R.id.EditText4);
@@ -115,7 +114,8 @@ public class BeginActivity extends Activity {
 					break;//TODO 异常
 				default:
 					Toast.makeText(BeginActivity.this, "注册成功",Toast.LENGTH_SHORT).show();
-//					LoginActivity.instance.finish();	//关闭LoginActivity
+					if(MyMenuActivity.instance != null){
+					MyMenuActivity.instance.finish();}
 					Intent intent = new Intent().setClass(BeginActivity.this, MyMenuActivity.class);
 //					Bundle bundle = new Bundle();
 //					bundle.putInt("restid", msg.what);

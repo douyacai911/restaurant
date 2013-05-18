@@ -8,11 +8,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -190,5 +195,65 @@ public class MyMenuActivity extends Activity {
 		getMenuInflater().inflate(R.menu.my_menu, menu);
 		return true;
 	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch(item.getItemId())//得到被点击的item的itemId
+        {
+        case R.id.action_settings://这里的Id就是布局文件中定义的Id，在用R.id.XXX的方法获取出来
+        	Intent intent = new Intent().setClass(MyMenuActivity.this, EditInfoActivity.class);
+			startActivity(intent);
+            break;
+        case R.id.item1:
+        	Intent intent2 = new Intent().setClass(MyMenuActivity.this, BeginActivity.class);
+//        	Bundle bundle = new Bundle();
+//			bundle.putBoolean("isEdit", true);
+//			intent2.putExtras(bundle);
+			startActivity(intent2);
+			break;
+        }
+        return true;
+    }
+	
+	@Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+        	final AlertDialog.Builder builder = new Builder(
+					MyMenuActivity.this);
+			builder.setTitle("确认退出")
+					.setMessage("确定要退出程序吗？")
+					.setPositiveButton(
+							"确定",
+							new DialogInterface.OnClickListener() {
+								public void onClick(
+										DialogInterface dialoginterface,
+										int i) {
+									// 按钮事件
+									  Intent exit = new Intent(Intent.ACTION_MAIN);
+					                    exit.addCategory(Intent.CATEGORY_HOME);
+					                    exit.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					                    startActivity(exit);
+					                    System.exit(0);
 
+								}
+							})
+					.setNegativeButton(
+							"取消",
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(
+										DialogInterface dialog,
+										int which) {
+									dialog.dismiss();
+								}
+							}).show(); //弹出确定退出对话框
+          
+            //不需要执行父类的点击事件，直接return
+            return true;
+        }  //继续执行父类的其他点击事件
+        return super.onKeyDown(keyCode, event);
+    }
 }
