@@ -43,6 +43,7 @@ public class BeginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_begin);
+		setTitle("注册餐厅信息");
 		app = (TheApplication) getApplication(); 
 		
 		restid = app.getRestid();
@@ -92,15 +93,15 @@ public class BeginActivity extends Activity {
 							focusView.requestFocus();
 						} else {
 							
-							coord = performGeocode(address.getText().toString());
-							if (coord != null & coord.equals("-1")) { // 未查到对应地理坐标
-								Toast.makeText(BeginActivity.this,
-										"该地址用于地图显示，请详细输入", Toast.LENGTH_SHORT)
-										.show();
-							} else {
+//							coord = performGeocode(address.getText().toString());
+//							if (coord != null & coord.equals("-1")) { // 未查到对应地理坐标
+//								Toast.makeText(BeginActivity.this,
+//										"该地址用于地图显示，请详细输入", Toast.LENGTH_SHORT)
+//										.show();
+//							} else {
 								findViewById(R.id.progressBar1).setVisibility(0);
 								new Thread(progressThread).start();
-							}
+//							}
 						}
 					}
 				});
@@ -109,6 +110,12 @@ public class BeginActivity extends Activity {
 			public void handleMessage(Message msg) {
 				findViewById(R.id.progressBar1).setVisibility(View.GONE);
 				switch(msg.what){
+				case -6:
+					Toast.makeText(BeginActivity.this, "无法获取地理坐标，请稍后再试",Toast.LENGTH_SHORT).show();
+					break;//TODO 异常 
+				case -5:
+					Toast.makeText(BeginActivity.this, "该地址用于地图显示，请详细输入",Toast.LENGTH_SHORT).show();
+					break;//TODO 异常
 				case -1:
 					Toast.makeText(BeginActivity.this, "对不起，此餐厅名已用于注册",Toast.LENGTH_SHORT).show();
 					break;//TODO 异常
@@ -150,14 +157,29 @@ public class BeginActivity extends Activity {
 			String Restname = restname.getText().toString();
 			String Tel = tel.getText().toString();
 			String Address = address.getText().toString();
-			String Location = coord;
+//			String Location = coord;
 			int Delivery = this.delivery;
-			String result = goRestRegister(Restid,Restname,Tel,Address,Location,Delivery);
+			String result = goRestRegister(Restid,Restname,Tel,Address,Delivery);
 			
 			return Integer.parseInt(result);
 	}
 			
-		private String goRestRegister(int Restid,String Restname,String Tel,String Address,String Location,int Delivery){
+		private String goRestRegister(int Restid,String Restname,String Tel,String Address,int Delivery){
+			String geoJson = HttpUtil.queryStringForPost("http://maps.googleapis.com/maps/api/geocode/json?address="+Address+"&sensor=false");
+			String Location = "";
+			try {
+				JSONObject geojson = new JSONObject(geoJson);
+				String status = geojson.getString("status");
+				if(status.equals("OK")){
+					JSONObject location = geojson.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location");
+					Location = location.getDouble("lng")+","+location.getDouble("lat");
+				}else
+				{return "-5";}
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				return "-6";
+			}
 			// 查询参数
 			JSONObject json = new JSONObject();
 			String param = null;
@@ -195,28 +217,29 @@ public class BeginActivity extends Activity {
 		return true;
 	}
 
-	private String performGeocode(String add) {
-		String result = null;
-			Geocoder geocoder = new Geocoder(this, Locale.CHINA);
-			try {
-				List<Address> addresses = geocoder.getFromLocationName(add, 1);
-				if (addresses != null && addresses.size() != 0) {
-					result = Double.toString(addresses.get(0).getLongitude())
-							+ ","
-							+ Double.toString(addresses.get(0).getLatitude());
-				} else {
-					result = "-1";
-				}
-			} catch (IOException e) {
-				Toast.makeText(BeginActivity.this, e.getMessage(),
-						Toast.LENGTH_SHORT).show();
-				result = "0";
-			}
-
-		
-
-		return result;
-	}
+//	private String performGeocode(String add) {
+//		
+//		String result = null;
+//			Geocoder geocoder = new Geocoder(this, Locale.CHINA);
+//			try {
+//				List<Address> addresses = geocoder.getFromLocationName(add, 1);
+//				if (addresses != null && addresses.size() != 0) {
+//					result = Double.toString(addresses.get(0).getLongitude())
+//							+ ","
+//							+ Double.toString(addresses.get(0).getLatitude());
+//				} else {
+//					result = "-1";
+//				}
+//			} catch (IOException e) {
+//				Toast.makeText(BeginActivity.this, e.getMessage(),
+//						Toast.LENGTH_SHORT).show();
+//				result = "0";
+//			}
+//
+//		
+//
+//		return result;
+//	}
 
 	protected boolean isRouteDisplayed() {
 		return false;

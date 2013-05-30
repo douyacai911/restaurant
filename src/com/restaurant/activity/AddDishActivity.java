@@ -40,6 +40,7 @@ public class AddDishActivity extends Activity {
         // TODO Auto-generated method stub  
         super.onCreate(savedInstanceState);  
         setContentView(R.layout.activity_add_dish);  
+		setTitle("Ìí¼Ó²ËÆ·");
         app = (TheApplication) getApplication(); 
         Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();

@@ -30,7 +30,8 @@
     android:layout_height="wrap_content"
     android:layout_alignBaseline="@+id/DishPrice"
     android:layout_alignBottom="@+id/DishPrice"
-    android:layout_centerHorizontal="true"
+    android:layout_alignLeft="@+id/DishPrice"
+    android:layout_marginLeft="119dp"
     android:text="元"
     android:textSize="20sp" />
   

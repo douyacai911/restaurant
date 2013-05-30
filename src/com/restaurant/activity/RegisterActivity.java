@@ -37,6 +37,7 @@ public class RegisterActivity extends Activity {
 		setContentView(R.layout.activity_register);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		setTitle("注册个人信息");
 		app = (TheApplication) getApplication(); 
 		userText = (EditText)findViewById(R.id.EditText1);
 		pwdText = (EditText)findViewById(R.id.EditText4);

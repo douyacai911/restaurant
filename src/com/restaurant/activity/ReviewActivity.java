@@ -39,6 +39,8 @@ public class ReviewActivity extends Activity {
 		Bundle bundle = intent.getExtras();
 		foodid = bundle.getInt("foodid");
 		dishname = bundle.getString("dishname");
+
+		setTitle("∆¿º€–≈œ¢");
 		list = (ListView) findViewById(R.id.listView1);
 		tdishname = (TextView) findViewById(R.id.textView1);
 		tdishname.setText(dishname);

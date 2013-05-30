@@ -32,6 +32,8 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+
+		setTitle("欢迎使用餐饮服务平台--店家版");
 		app = (TheApplication) getApplication(); 
 		userText = (EditText)findViewById(R.id.userText);
 		pwdText = (EditText)findViewById(R.id.pwdText);

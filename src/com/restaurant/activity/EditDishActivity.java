@@ -48,6 +48,7 @@ public class EditDishActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_dish);
+		setTitle("±à¼­²ËÆ·");
 		// Show the Up button in the action bar.
 		setupActionBar();
 		app = (TheApplication) getApplication(); 
@@ -156,7 +157,7 @@ public class EditDishActivity extends Activity {
 													} catch (Exception e) {
 														Toast.makeText(
 																EditDishActivity.this,
-																"Failed to send SMS",
+																"Failed",
 																Toast.LENGTH_LONG)
 																.show();
 														e.printStackTrace();
